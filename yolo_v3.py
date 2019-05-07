@@ -22,6 +22,11 @@ def block_fn(inputs,num_filters):
     print("block_fn res.shape:\t",inputs.shape)
     return inputs
 def block_layer(inputs, num_filters, num_blocks):
+    # 26 *26 512 downsampling failed maybe a bug tf1.8
+    # 26 *26 512 downsampling failed maybe a bug tf1.8
+    # 26 *26 512 downsampling failed maybe a bug tf1.8
+    #inputs = darknet_bn_leaky(inputs,num_filters,kernel_size=(3,3),strides=(2,2),padding="same")
+    #print("darknet_bn_leaky inputs.shape:\t",inputs.shape)
     for _ in range(num_blocks):
         inputs = block_fn(inputs,num_filters)
     return inputs
